@@ -28,13 +28,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product createProduct(Product product, String userName) {
-        Member member = memberService.findMember(userName);
+        memberService.findMember(userName);
 
         return jpaProductRepository.save(product);
     }
 
     @Override
-    public Product updateProductPrice(long productId, Product product) {
+    public Product updateProductPrice(String userName, long productId, Product product) {
+        memberService.findMember(userName);
+
         Product findProduct = findProduct(productId);
 
         Product updateProduct = beanUtils.copyNonNullProperties(product, findProduct);
@@ -48,9 +50,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
-    public void deleteProduct(long productId, String productName) {
+    public void deleteProduct(String userName, long productId) {
+        memberService.findMember(userName);
 
+        Product findProduct = findProduct(productId);
+
+        jpaProductRepository.delete(findProduct);
     }
 
     // 검증 로직
@@ -61,6 +66,6 @@ public class ProductServiceImpl implements ProductService {
     private Product verifyProduct(long productId) {
         Optional<Product> optionalProduct = jpaProductRepository.findById(productId);
         return optionalProduct.orElseThrow(() ->
-                new CustomLogicException(ExceptionCode.UNAUTHORIZED));
+                new CustomLogicException(ExceptionCode.PRODUCT_NONE));
     }
 }

@@ -57,8 +57,9 @@ public class SecurityConfig {
                 .and().authorizeRequests(
                         authorize -> authorize
                                 // product
-                                .antMatchers(HttpMethod.POST, "/api/v1/products").hasRole("ADMIN")
+                                .antMatchers(HttpMethod.POST, "/api/v1/products/**").hasRole("ADMIN")
                                 .antMatchers(HttpMethod.PATCH, "/api/v1/products/**").hasRole("ADMIN")
+                                .antMatchers(HttpMethod.DELETE,"/api/v1/products/**").hasRole("ADMIN")
                                 .antMatchers("/api/v1/products/**").permitAll()
                                 // basic
                                 .antMatchers("/docs/index.html").permitAll()

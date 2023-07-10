@@ -41,9 +41,10 @@ public class ProductController {
 
     // 상품 가격 수정
     @PatchMapping("/{product_id}")
-    public ResponseEntity patchProduct(@PathVariable("product_id") @Positive long productId,
+    public ResponseEntity patchProduct(@AuthenticationPrincipal User authMember,
+                                       @PathVariable("product_id") @Positive long productId,
                                       @Valid @RequestBody ProductRequestDto.ProductPatch requestBody) {
-        Product product = productService.updateProductPrice(productId, mapper.productPatchDtoToProduct(requestBody));
+        Product product = productService.updateProductPrice(authMember.getUsername(), productId, mapper.productPatchDtoToProduct(requestBody));
         return ResponseEntity.ok(new SingleResponse<>(mapper.productToProductResponseDto(product)));
     }
 
@@ -54,8 +55,10 @@ public class ProductController {
 //    }
 
     // 상품 삭제
-//    @DeleteMapping("/{product_id}")
-//    public ResponseEntity deleteProduct() {
-//        return ResponseEntity.noContent();
-//    }
+    @DeleteMapping("/{product_id}")
+    public ResponseEntity deleteProduct(@AuthenticationPrincipal User authMember,
+                                        @PathVariable("product_id") @Positive long productId) {
+        productService.deleteProduct(authMember.getUsername(), productId);
+        return ResponseEntity.noContent().build();
+    }
 }
