@@ -5,7 +5,10 @@ import com.assignment.productmanagementservice.domain.product.entity.Product;
 import com.assignment.productmanagementservice.domain.product.mapper.ProductMapper;
 import com.assignment.productmanagementservice.domain.product.service.ProductService;
 import com.assignment.productmanagementservice.grobal.response.SingleResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,27 +22,29 @@ import java.text.ParseException;
 @RequestMapping("/api/v1/products")
 public class ProductController {
     private final ProductService productService;
-    private final ProductMapper productMapper;
+    private final ProductMapper mapper;
     private static final String BASE_URL = "/api/v1/products";
 
-    public ProductController(ProductService productService, ProductMapper productMapper) {
+    public ProductController(ProductService productService, ProductMapper mapper) {
         this.productService = productService;
-        this.productMapper = productMapper;
+        this.mapper = mapper;
     }
 
     // 상품 생성
     @PostMapping()
-    public ResponseEntity postProduct(@Valid @RequestBody ProductRequestDto.ProductPost requestBody) {
-        Product product = productService.createProduct(productMapper.productPostDtoToProduct(requestBody));
-        return ResponseEntity.created(URI.create(BASE_URL)).build();
+    public ResponseEntity postProduct(@AuthenticationPrincipal User authMember,
+                                      @Valid @RequestBody ProductRequestDto.ProductPost requestBody) {
+        Product product = productService.createProduct(mapper.productPostDtoToProduct(requestBody), authMember.getUsername());
+//        return ResponseEntity.created(URI.create(BASE_URL)).build(); // TODO
+        return new ResponseEntity<>(new SingleResponse<>(mapper.productToProductResponseDto(product)), HttpStatus.CREATED);
     }
 
     // 상품 가격 수정
     @PatchMapping("/{product_id}")
     public ResponseEntity patchProduct(@PathVariable("product_id") @Positive long productId,
                                       @Valid @RequestBody ProductRequestDto.ProductPatch requestBody) {
-        Product product = productService.updateProductPrice(productId, productMapper.productPatchDtoToProduct(requestBody));
-        return ResponseEntity.ok(new SingleResponse<>(productMapper.productToProductResponseDto(product)));
+        Product product = productService.updateProductPrice(productId, mapper.productPatchDtoToProduct(requestBody));
+        return ResponseEntity.ok(new SingleResponse<>(mapper.productToProductResponseDto(product)));
     }
 
     // 특정 시점의 상품 가격 조회

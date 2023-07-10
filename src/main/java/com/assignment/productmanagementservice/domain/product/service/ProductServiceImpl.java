@@ -1,10 +1,13 @@
 package com.assignment.productmanagementservice.domain.product.service;
 
+import com.assignment.productmanagementservice.domain.member.entity.Member;
+import com.assignment.productmanagementservice.domain.member.service.MemberService;
 import com.assignment.productmanagementservice.domain.product.entity.Product;
 import com.assignment.productmanagementservice.domain.product.repository.JpaProductRepository;
 import com.assignment.productmanagementservice.grobal.exception.CustomLogicException;
 import com.assignment.productmanagementservice.grobal.exception.ExceptionCode;
 import com.assignment.productmanagementservice.grobal.utils.CustomBeanUtils;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,15 +17,19 @@ import java.util.Optional;
 @Transactional
 public class ProductServiceImpl implements ProductService {
     private final JpaProductRepository jpaProductRepository;
+    private final MemberService memberService;
     private final CustomBeanUtils<Product> beanUtils;
 
-    public ProductServiceImpl(JpaProductRepository jpaProductRepository, CustomBeanUtils<Product> beanUtils) {
+    public ProductServiceImpl(JpaProductRepository jpaProductRepository, MemberService memberService, CustomBeanUtils<Product> beanUtils) {
         this.jpaProductRepository = jpaProductRepository;
+        this.memberService = memberService;
         this.beanUtils = beanUtils;
     }
 
     @Override
-    public Product createProduct(Product product) {
+    public Product createProduct(Product product, String userName) {
+        Member member = memberService.findMember(userName);
+
         return jpaProductRepository.save(product);
     }
 
@@ -41,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteProduct(long productId, String productName) {
 
     }

@@ -22,6 +22,10 @@ spring:
     active: local
   main:
     allow-bean-definition-overriding: true
+
+admin:
+  email : mart@gmail.com, admin@gmail.com
+
 jwt:
   secret: randomTestValueItisNotUsedInProdEnv
   expiration: 1800000000

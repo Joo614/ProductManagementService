@@ -25,6 +25,7 @@ public class ProductRequestDto {
     @Setter
     @ToString
     @Builder
+    @NoArgsConstructor
     public static class ProductPatch {
         @NotNull
         private Long price;
