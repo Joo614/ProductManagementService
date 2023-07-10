@@ -1,0 +1,31 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    properties:
+      javax:
+        persistence:
+          sharedCache:
+            mode: ALL
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        format_sql: true
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true # TODO data.sql? ? ???? ?? ??
+    show-sql: true # SQL ?? ??
+    open-in-view: true
+  profiles:
+    active: local
+  main:
+    allow-bean-definition-overriding: true
+jwt:
+  secret: randomTestValueItisNotUsedInProdEnv
+  expiration: 1800000000
+  # 30 minutes
+  refresh:
+    expiration: 604800000
+  # 7 days
