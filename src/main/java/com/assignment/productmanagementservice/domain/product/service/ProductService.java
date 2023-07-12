@@ -2,8 +2,6 @@ package com.assignment.productmanagementservice.domain.product.service;
 
 import com.assignment.productmanagementservice.domain.product.entity.Product;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 
 import java.time.LocalDateTime;
 import java.util.List;

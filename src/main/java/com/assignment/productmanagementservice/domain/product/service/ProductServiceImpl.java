@@ -1,17 +1,16 @@
 package com.assignment.productmanagementservice.domain.product.service;
 
-import com.assignment.productmanagementservice.domain.member.entity.Member;
 import com.assignment.productmanagementservice.domain.member.service.MemberService;
 import com.assignment.productmanagementservice.domain.product.entity.Product;
 import com.assignment.productmanagementservice.domain.product.repository.JpaProductRepository;
+import com.assignment.productmanagementservice.domain.productPriceHistory.entity.ProductPriceHistory;
+import com.assignment.productmanagementservice.domain.productPriceHistory.repository.JpaProductPriceHistoryRepository;
 import com.assignment.productmanagementservice.grobal.exception.CustomLogicException;
 import com.assignment.productmanagementservice.grobal.exception.ExceptionCode;
 import com.assignment.productmanagementservice.grobal.utils.CustomBeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -24,11 +23,13 @@ import java.util.Optional;
 @Transactional
 public class ProductServiceImpl implements ProductService {
     private final JpaProductRepository jpaProductRepository;
+    private final JpaProductPriceHistoryRepository jpaProductPriceHistoryRepository;
     private final MemberService memberService;
     private final CustomBeanUtils<Product> beanUtils;
 
-    public ProductServiceImpl(JpaProductRepository jpaProductRepository, MemberService memberService, CustomBeanUtils<Product> beanUtils) {
+    public ProductServiceImpl(JpaProductRepository jpaProductRepository, JpaProductPriceHistoryRepository jpaProductPriceHistoryRepository, MemberService memberService, CustomBeanUtils<Product> beanUtils) {
         this.jpaProductRepository = jpaProductRepository;
+        this.jpaProductPriceHistoryRepository = jpaProductPriceHistoryRepository;
         this.memberService = memberService;
         this.beanUtils = beanUtils;
     }
@@ -37,7 +38,21 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(Product product, String userName) {
         memberService.findMember(userName);
 
-        return jpaProductRepository.save(product);
+        // TODO 같은 이름으로 상품 등록하면 안되는데
+        // TODO 아 그럼 유니크로 하고 priceHistory 도메인을 하나 만들어서
+        // TODO update 할 때 여기 레포에 저장하고 기본적으로 priceHistory 레포에 다 저장하면 되겠다.
+        Product savedProduct = jpaProductRepository.save(product); // Product 저장
+
+        // productPrice 레포에 저장
+        ProductPriceHistory productPriceHistory = new ProductPriceHistory();
+        productPriceHistory.setProductId(savedProduct.getProductId());
+        productPriceHistory.setProductName(savedProduct.getProductName());
+        productPriceHistory.setPrice(product.getPrice());
+        productPriceHistory.setCreatedAt(LocalDateTime.now());
+        productPriceHistory.setModifiedAt(LocalDateTime.now());
+        jpaProductPriceHistoryRepository.save(productPriceHistory); // ProductPrice 저장
+
+        return savedProduct;
     }
 
     @Override
@@ -48,14 +63,18 @@ public class ProductServiceImpl implements ProductService {
 
         Product updateProduct = beanUtils.copyNonNullProperties(product, findProduct);
 
-        Product result = new Product();
-        result.setPrice(updateProduct.getPrice());
-        result.setProductName(updateProduct.getProductName());
-        result.setModifiedAt(LocalDateTime.now());
-        result.setCreatedAt(findProduct.getCreatedAt());
+        Product savedProduct = jpaProductRepository.save(updateProduct); // Product 저장
 
-        // TODO 잘 되면 findProduct 객체에 저장하도록 해보기
-        return jpaProductRepository.save(result);
+        // productPrice 레포에 저장
+        ProductPriceHistory productPriceHistory = new ProductPriceHistory();
+        productPriceHistory.setProductId(updateProduct.getProductId());
+        productPriceHistory.setProductName(updateProduct.getProductName());
+        productPriceHistory.setPrice(product.getPrice());
+        productPriceHistory.setCreatedAt(updateProduct.getCreatedAt());
+        productPriceHistory.setModifiedAt(LocalDateTime.now());
+        jpaProductPriceHistoryRepository.save(productPriceHistory); // ProductPrice 저장
+
+        return savedProduct;
     }
 
     @Override
