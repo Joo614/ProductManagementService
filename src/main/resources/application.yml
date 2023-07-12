@@ -4,10 +4,6 @@ spring:
       enabled: always
   jpa:
     properties:
-      javax:
-        persistence:
-          sharedCache:
-            mode: ALL
       hibernate:
         jdbc:
           lob:
@@ -16,7 +12,7 @@ spring:
     hibernate:
       ddl-auto: create
     defer-datasource-initialization: true # TODO data.sql? ? ???? ?? ??
-    show-sql: true # SQL ?? ??
+    show-sql: true
     open-in-view: true
   profiles:
     active: local

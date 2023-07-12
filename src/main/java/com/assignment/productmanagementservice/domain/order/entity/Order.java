@@ -1,5 +1,6 @@
 package com.assignment.productmanagementservice.domain.order.entity;
 
+import com.assignment.productmanagementservice.domain.orderItem.entity.OrderItem;
 import com.assignment.productmanagementservice.grobal.audit.Auditable;
 import lombok.*;
 
@@ -24,4 +25,8 @@ public class Order extends Auditable {
 
     @Column(nullable = false, length = 10)
     private Long deliveryFee;
+
+    @Column(nullable = false, length = 10)
+    private Long totalAmount;
+    // TODO 여기 쿠폰 어떻게 할지
 }

@@ -5,9 +5,30 @@ import com.assignment.productmanagementservice.domain.product.dto.ProductRespons
 import com.assignment.productmanagementservice.domain.product.entity.Product;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
     Product productPostDtoToProduct(ProductRequestDto.ProductPost requestBody);
     Product productPatchDtoToProduct(ProductRequestDto.ProductPatch requestBody);
-    ProductResponseDto productToProductResponseDto(Product product);
+
+    // TODO 검증 끝나면 default 삭제
+    default ProductResponseDto productToProductResponseDto(Product product) {
+        if (product == null) {
+            return null;
+        }
+        return ProductResponseDto.builder()
+                .productId(product.getProductId())
+                .price(product.getPrice())
+                .productName(product.getProductName())
+                .build();
+    }
+
+    // TODO 검증용
+    default List<ProductResponseDto> productsToProductResponses(List<Product> products) {
+        List<ProductResponseDto> responseDtos = products.stream()
+                .map(this::productToProductResponseDto)
+                .toList();
+        return responseDtos;
+    }
 }

@@ -33,17 +33,12 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.save(member);
     }
 
+    // 검증 로직
     private void duplicateMember(String email) {
         memberRepository.findByEmail(email)
                 .ifPresent(member -> {
                     throw new CustomLogicException(ExceptionCode.MEMBER_DUPLICATE);
                 });
-    }
-
-    // TODO 밑으로 다 제거 - 검증용임
-    @Override
-    public MemberDto.Response findMemberDto(String email) {
-        return findMember(email).toResponseDto();
     }
 
     @Override
@@ -53,7 +48,14 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member verifyMember(String email) {
-        return memberRepository.findByEmail(email).orElseThrow(() -> new CustomLogicException(ExceptionCode.MEMBER_NONE));
+        return memberRepository.findByEmail(email).orElseThrow(() ->
+                new CustomLogicException(ExceptionCode.MEMBER_NONE));
+    }
+
+    // TODO 밑으로 필요 없는 애들만 제거
+    @Override
+    public MemberDto.Response findMemberDto(String email) {
+        return findMember(email).toResponseDto();
     }
 
 }

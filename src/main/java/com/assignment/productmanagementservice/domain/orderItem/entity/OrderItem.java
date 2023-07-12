@@ -1,5 +1,7 @@
-package com.assignment.productmanagementservice.domain.order.entity;
+package com.assignment.productmanagementservice.domain.orderItem.entity;
 
+import com.assignment.productmanagementservice.domain.order.entity.Order;
+import com.assignment.productmanagementservice.domain.product.entity.Product;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,4 +23,8 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    private Product product;
 }
