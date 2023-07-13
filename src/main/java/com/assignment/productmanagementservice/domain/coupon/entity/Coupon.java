@@ -1,5 +1,6 @@
 package com.assignment.productmanagementservice.domain.coupon.entity;
 
+import com.assignment.productmanagementservice.domain.order.entity.Order;
 import com.assignment.productmanagementservice.domain.product.entity.Product;
 import com.assignment.productmanagementservice.grobal.audit.Auditable;
 import lombok.*;
@@ -41,5 +42,9 @@ public class Coupon extends Auditable {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product specificProduct;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id") // 주문과 연결되어야 함
+    private Order order;
 
 }

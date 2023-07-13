@@ -20,7 +20,7 @@ public class OrderItem {
     @Column(nullable = false, length = 20)
     private Long quantity;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 

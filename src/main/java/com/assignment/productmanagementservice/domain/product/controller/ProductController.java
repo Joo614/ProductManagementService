@@ -7,6 +7,7 @@ import com.assignment.productmanagementservice.domain.product.service.ProductSer
 import com.assignment.productmanagementservice.grobal.response.MultiResponseDto;
 import com.assignment.productmanagementservice.grobal.response.SingleResponse;
 import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -48,15 +50,6 @@ public class ProductController {
         Product product = productService.updateProductPrice(authMember.getUsername(), productId, mapper.productPatchDtoToProduct(requestBody));
         return ResponseEntity.ok(new SingleResponse<>(mapper.productToProductResponseDto(product)));
     }
-
-    // 특정 시점의 상품 가격 조회
-//    @GetMapping("/{product_id}/price")
-//    public ResponseEntity getProductPriceAtSpecificTime(@AuthenticationPrincipal User authMember,
-//                                                        @PathVariable("product_id") @Positive long productId,
-//                                                        @RequestParam("timestamp") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timestamp){
-//        Product product = productService.findProductPriceAtSpecificTime(productId, timestamp, authMember.getUsername());
-//        return ResponseEntity.ok();
-//    }
 
     // 상품 삭제
     @DeleteMapping("/{product_id}")

@@ -36,26 +36,21 @@ public class OrderServiceImpl implements OrderService {
         productService.findProductsByIds(productIds);
 
         // 주문 총 금액 계산
+        // amount - 가격 * 수량 / totalAmount - 총 금액 ( amount + 배달비 )
         List<OrderItem> orderItems = order.getOrderItems();
-        long totalAmount = orderItems.stream()
+        long amount = orderItems.stream()
                 .mapToLong(orderItem -> {
-                    long price = orderItem.getProduct().getPrice();
+                    Product product = productService.findProduct(orderItem.getProduct().getProductId());
+                    long price = product.getPrice();
                     long quantity = orderItem.getQuantity();
                     return price * quantity;
                 })
                 .sum();
 
-        // TODO
-//        for (OrderItem orderItem : orderItems) {
-//            Product product = orderItem.getProduct();
-//            long price = product.getPrice();
-//            long quantity = orderItem.getQuantity();
-//
-//            orderItem.setPrice(price); // OrderItem에 price 설정
-//            orderItem.setTotalAmount(price * quantity); // OrderItem에 totalAmount 설정
-//        }
+        long deliveryFee = order.getDeliveryFee() != null ? order.getDeliveryFee() : 3000L;
+        order.setDeliveryFee(deliveryFee); // 배달비 임의로 3000원으로 설정
 
-        order.setDeliveryFee(3000L); // 배달비 임의로 3000원으로 설정
+        long totalAmount = amount + deliveryFee;
         order.setTotalAmount(totalAmount); // 총 금액 설정
 
         return jpaOrderRepository.save(order);

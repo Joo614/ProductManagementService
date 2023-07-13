@@ -16,9 +16,10 @@ public class ProductPriceHistory extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productPriceHistoryId;
-
-    // TODO 콜롬 추가
+    @Column(nullable = false)
     private Long productId;
+    @Column(nullable = false, length = 50)
     private String productName;
+    @Column(nullable = false, length = 10)
     private Long price;
 }

@@ -38,9 +38,6 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(Product product, String userName) {
         memberService.findMember(userName);
 
-        // TODO 같은 이름으로 상품 등록하면 안되는데
-        // TODO 아 그럼 유니크로 하고 priceHistory 도메인을 하나 만들어서
-        // TODO update 할 때 여기 레포에 저장하고 기본적으로 priceHistory 레포에 다 저장하면 되겠다.
         Product savedProduct = jpaProductRepository.save(product); // Product 저장
 
         // productPrice 레포에 저장
@@ -75,14 +72,6 @@ public class ProductServiceImpl implements ProductService {
         jpaProductPriceHistoryRepository.save(productPriceHistory); // ProductPrice 저장
 
         return savedProduct;
-    }
-
-    @Override
-    public Product findProductPriceAtSpecificTime(long productId, LocalDateTime timestamp, String userName) {
-//        Product productPrice = productPriceRepository.findLatestPriceBeforeTimestamp(productId, timestamp)
-//                .orElseThrow(() -> new NotFoundException("Product price not found for the given timestamp."));
-//
-        return null;
     }
 
     @Override

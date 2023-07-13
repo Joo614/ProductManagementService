@@ -38,7 +38,6 @@ public class Member extends Auditable {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<AuthoritiesEntity> roles;
 
-    // TODO 이거 따로 클래스 뺄지 고민
     public enum MemberStatus {
         MEMBER_ACTIVE("활동중"),
         MEMBER_SLEEP("휴면 상태"),

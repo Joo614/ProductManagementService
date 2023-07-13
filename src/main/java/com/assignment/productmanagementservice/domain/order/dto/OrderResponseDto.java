@@ -11,8 +11,11 @@ import java.util.List;
 @ToString
 @Builder
 public class OrderResponseDto {
-    private List<OrderItemDto> orderItems;
+    private Long orderId;
+    private List<OrderItemDto.Response> orderItems;
+//    private OrderItemDto.Response productId;
+//    private OrderItemDto.Response quantity;
     private Long deliveryFee;
     private Long totalAmount;
-    // TODO 여기 쿠폰 어떻게 할지 - 쿠폰 적용 금액 나오게?
+    private String appliedCoupon; // 적용한 쿠폰
 }
