@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.domain.Page;
 
-
-// TODO 검증용
 @AllArgsConstructor
 @Getter
 public class PageInfo {

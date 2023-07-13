@@ -4,10 +4,9 @@ import com.assignment.productmanagementservice.domain.product.dto.ProductRequest
 import com.assignment.productmanagementservice.domain.product.entity.Product;
 import com.assignment.productmanagementservice.domain.product.mapper.ProductMapper;
 import com.assignment.productmanagementservice.domain.product.service.ProductService;
-import com.assignment.productmanagementservice.grobal.response.MultiResponseDto;
+import com.assignment.productmanagementservice.grobal.response.MultiResponse;
 import com.assignment.productmanagementservice.grobal.response.SingleResponse;
 import org.springframework.data.domain.Page;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -26,7 +24,6 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
     private final ProductMapper mapper;
-    private static final String BASE_URL = "/api/v1/products"; // TODO 사용 안하면 지우기
 
     public ProductController(ProductService productService, ProductMapper mapper) {
         this.productService = productService;
@@ -38,7 +35,6 @@ public class ProductController {
     public ResponseEntity postProduct(@AuthenticationPrincipal User authMember,
                                       @Valid @RequestBody ProductRequestDto.ProductPost requestBody) {
         Product product = productService.createProduct(mapper.productPostDtoToProduct(requestBody), authMember.getUsername());
-//        return ResponseEntity.created(URI.create(BASE_URL)).build(); // TODO
         return new ResponseEntity<>(new SingleResponse<>(mapper.productToProductResponseDto(product)), HttpStatus.CREATED);
     }
 
@@ -59,13 +55,13 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    // TODO 나중에 지우기
+    // 모든 상품 조회
     @GetMapping
     public ResponseEntity getAllProducts(@Positive @RequestParam int page,
                                          @Positive @RequestParam int size) {
         Page<Product> pageProduct = productService.findAllProduct(page - 1, size);
         List<Product> products = pageProduct.getContent();
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.productsToProductResponses(products), pageProduct), HttpStatus.OK);
+                new MultiResponse<>(mapper.productsToProductResponses(products), pageProduct), HttpStatus.OK);
     }
 }

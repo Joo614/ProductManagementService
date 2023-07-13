@@ -4,7 +4,7 @@ import com.assignment.productmanagementservice.domain.coupon.dto.CouponDto;
 import com.assignment.productmanagementservice.domain.orderItem.dto.OrderItemDto;
 import lombok.*;
 
-import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -19,10 +19,8 @@ public class OrderRequestDto {
     @Builder
     @NoArgsConstructor
     public static class OrderPost {
-        @NonNull
+        @NotNull
         private List<OrderItemDto.Post> orderItems;
-        @Builder.Default
-        private Long deliveryFee = 3000L; // 기본 배달비를 3000원으로 설정
         private CouponDto.OrderPost coupon;
     }
 }

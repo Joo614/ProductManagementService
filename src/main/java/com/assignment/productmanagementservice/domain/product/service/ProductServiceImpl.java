@@ -34,20 +34,15 @@ public class ProductServiceImpl implements ProductService {
         this.beanUtils = beanUtils;
     }
 
+    // 상품 생성
     @Override
     public Product createProduct(Product product, String userName) {
         memberService.findMember(userName);
 
         Product savedProduct = jpaProductRepository.save(product); // Product 저장
 
-        // productPrice 레포에 저장
-        ProductPriceHistory productPriceHistory = new ProductPriceHistory();
-        productPriceHistory.setProductId(savedProduct.getProductId());
-        productPriceHistory.setProductName(savedProduct.getProductName());
-        productPriceHistory.setPrice(product.getPrice());
-        productPriceHistory.setCreatedAt(LocalDateTime.now());
-        productPriceHistory.setModifiedAt(LocalDateTime.now());
-        jpaProductPriceHistoryRepository.save(productPriceHistory); // ProductPrice 저장
+        // productPriceHistory 레포에 저장
+        saveProductPriceHistory(savedProduct); // ProductPriceHistory 저장
 
         return savedProduct;
     }
@@ -62,18 +57,24 @@ public class ProductServiceImpl implements ProductService {
 
         Product savedProduct = jpaProductRepository.save(updateProduct); // Product 저장
 
-        // productPrice 레포에 저장
-        ProductPriceHistory productPriceHistory = new ProductPriceHistory();
-        productPriceHistory.setProductId(updateProduct.getProductId());
-        productPriceHistory.setProductName(updateProduct.getProductName());
-        productPriceHistory.setPrice(product.getPrice());
-        productPriceHistory.setCreatedAt(updateProduct.getCreatedAt());
-        productPriceHistory.setModifiedAt(LocalDateTime.now());
-        jpaProductPriceHistoryRepository.save(productPriceHistory); // ProductPrice 저장
+        // productPriceHistory 레포에 저장
+        saveProductPriceHistory(savedProduct); // ProductPriceHistory 저장
 
         return savedProduct;
     }
 
+    // 상품 가격 History 저장
+    private void saveProductPriceHistory(Product product) {
+        ProductPriceHistory productPriceHistory = new ProductPriceHistory();
+        productPriceHistory.setProductId(product.getProductId());
+        productPriceHistory.setProductName(product.getProductName());
+        productPriceHistory.setPrice(product.getPrice());
+        productPriceHistory.setCreatedAt(product.getCreatedAt());
+        productPriceHistory.setModifiedAt(LocalDateTime.now());
+        jpaProductPriceHistoryRepository.save(productPriceHistory);
+    }
+
+    // 상품 삭제
     @Override
     public void deleteProduct(String userName, long productId) {
         memberService.findMember(userName);
@@ -82,6 +83,14 @@ public class ProductServiceImpl implements ProductService {
 
         jpaProductRepository.delete(findProduct);
     }
+
+    // 모든 상품 조회
+    @Override
+    public Page<Product> findAllProduct(int page, int size) {
+        return jpaProductRepository.findAll(PageRequest.of(page, size,
+                Sort.by("productId").descending()));
+    }
+
 
     // 검증 로직
     @Override
@@ -96,20 +105,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findProductsByIds(List<Long> productIds) {
+    public void findProductsByIds(List<Long> productIds) {
         List<Product> products = new ArrayList<>();
 
         for (Long productId : productIds) {
             Product product = verifyProduct(productId);
             products.add(product);
         }
-        return products;
     }
 
-    // TODO 검증용
-    @Override
-    public Page<Product> findAllProduct(int page, int size) {
-        return jpaProductRepository.findAll(PageRequest.of(page, size,
-                Sort.by("productId").descending()));
-    }
 }

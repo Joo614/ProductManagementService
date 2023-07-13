@@ -22,8 +22,8 @@ import java.time.LocalDateTime;
 public abstract class Auditable {
     @CreatedDate
     @Column(name = "CREATED_AT", updatable = false)
-    @JsonSerialize(using = LocalDateTimeSerializer.class) // yyyy-MM-dd HH:mm:ss 형식으로 직렬화하게끔
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class) // 같은 형식으로 역직렬화 가능하게끔
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdAt;
 
     @LastModifiedDate

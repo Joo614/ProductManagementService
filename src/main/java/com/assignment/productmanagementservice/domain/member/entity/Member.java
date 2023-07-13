@@ -3,11 +3,9 @@ package com.assignment.productmanagementservice.domain.member.entity;
 import com.assignment.productmanagementservice.domain.member.dto.MemberDto;
 import com.assignment.productmanagementservice.grobal.audit.Auditable;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -68,7 +66,6 @@ public class Member extends Auditable {
         private String gender;
     }
 
-    // TODO 밑으로 다 제거 - 검증용임
     public  MemberDto.Response toResponseDto(){
         return MemberDto.Response.builder()
                 .email(email)

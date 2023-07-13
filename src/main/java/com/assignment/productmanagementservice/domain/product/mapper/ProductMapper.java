@@ -12,7 +12,6 @@ public interface ProductMapper {
     Product productPostDtoToProduct(ProductRequestDto.ProductPost requestBody);
     Product productPatchDtoToProduct(ProductRequestDto.ProductPatch requestBody);
 
-    // TODO 검증 끝나면 default 삭제
     default ProductResponseDto productToProductResponseDto(Product product) {
         if (product == null) {
             return null;
@@ -26,7 +25,7 @@ public interface ProductMapper {
                 .build();
     }
 
-    // TODO 검증용
+
     default List<ProductResponseDto> productsToProductResponses(List<Product> products) {
         List<ProductResponseDto> responseDtos = products.stream()
                 .map(this::productToProductResponseDto)

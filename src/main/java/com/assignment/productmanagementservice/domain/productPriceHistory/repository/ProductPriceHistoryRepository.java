@@ -9,13 +9,11 @@ import java.util.Optional;
 
 public interface ProductPriceHistoryRepository {
 
-    // TODO 일단 이걸로 하고 나중에 queryDsl로 바꾸기
+    // TODO queryDsl로 변경
     @Query("SELECT p FROM ProductPriceHistory p GROUP BY p.productId, p.productPriceHistoryId")
     List<ProductPriceHistory> findAllGroupedByProductId();
 
     Optional<ProductPriceHistory> findByProductIdAndModifiedAt(long productId, LocalDateTime timestamp);
-//    Optional<ProductPriceHistory> findFirstByProductIdAndModifiedAtBeforeOrderByModifiedAtDesc(long productId, LocalDateTime timestamp);
-    // TODO 쿼리 dsl
 
     Optional<ProductPriceHistory> findByProductId(long productId);
 }

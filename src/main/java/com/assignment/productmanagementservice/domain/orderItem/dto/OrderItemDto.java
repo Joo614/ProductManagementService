@@ -20,8 +20,6 @@ public class OrderItemDto {
         private Long productId;
         @NotNull
         private Long quantity;
-
-        // TDOO dto들 다 valid 설정했는지 체크
     }
 
     @Getter

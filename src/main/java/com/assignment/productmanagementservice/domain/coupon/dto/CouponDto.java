@@ -4,9 +4,6 @@ import com.assignment.productmanagementservice.domain.coupon.entity.CouponScope;
 import com.assignment.productmanagementservice.domain.coupon.entity.CouponType;
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
-
 @AllArgsConstructor
 @Getter
 @Setter
@@ -18,25 +15,27 @@ public class CouponDto {
     @Setter
     @ToString
     @Builder
-    public static class CouponPost { // 쿠폰 생성 시 요청으로 들어와야할 Dto
+    public static class CouponPost { // 쿠폰 생성 시 요청으로 들어와야할 Dto - Mart용
         @NonNull
         private String couponName;
-        @NonNull
-        private BigDecimal discountRate;
+        private Long discountRate; // 할인율
+        private Long discountAmount; // 할인 금액
         @NonNull
         private CouponType type;
         @NonNull
         private CouponScope scope;
+        private Long productId; // 쿠폰 적용할 상품 Id
     }
 
     @AllArgsConstructor
+    @NoArgsConstructor
     @Getter
     @Setter
     @ToString
     @Builder
-    public static class OrderPost { // 주문 시 적용할 쿠폰 고르는 Dto
+    public static class OrderPost { // 주문 시 적용할 쿠폰 고르는 Dto - 고객용
         @NonNull
-        private String couponName;
+        private Long couponId;
     }
 
     @Getter
@@ -47,9 +46,10 @@ public class CouponDto {
     public static class Response {
         private Long couponId;
         private String couponName;
-        private BigDecimal discountRate;
-        private BigDecimal discountAmount;
+        private Long discountRate;
+        private Long discountAmount;
         private CouponType type;
         private CouponScope scope;
+        private Long specificProductId;
     }
 }

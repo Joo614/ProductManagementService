@@ -1,13 +1,10 @@
 package com.assignment.productmanagementservice.domain.member.controller;
 
 import com.assignment.productmanagementservice.domain.member.dto.MemberDto;
-import com.assignment.productmanagementservice.domain.member.entity.Member;
 import com.assignment.productmanagementservice.domain.member.mapper.MemberMapper;
 import com.assignment.productmanagementservice.domain.member.service.MemberService;
 import com.assignment.productmanagementservice.grobal.response.SingleResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +31,7 @@ public class MemberController {
         return ResponseEntity.created(URI.create(BASE_URL)).build();
     }
 
-    // TODO 밑으로 다 제거 - 검증용임
+    // 회원 조회
     @GetMapping("/{email}")
     public ResponseEntity getMember(@PathVariable String email) {
         MemberDto.Response member = memberService.findMemberDto(email);

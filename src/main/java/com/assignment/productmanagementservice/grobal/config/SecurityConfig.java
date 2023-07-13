@@ -61,6 +61,8 @@ public class SecurityConfig {
                                 .antMatchers(HttpMethod.PATCH, "/api/v1/products/**").hasRole("ADMIN")
                                 .antMatchers(HttpMethod.DELETE,"/api/v1/products/**").hasRole("ADMIN")
                                 .antMatchers("/api/v1/products/**").permitAll()
+                                // coupon
+                                .antMatchers(HttpMethod.POST, "/api/v1/coupons/**").hasRole("ADMIN")
                                 // basic
                                 .antMatchers("/docs/index.html").permitAll()
                                 .antMatchers("/h2/**").permitAll()

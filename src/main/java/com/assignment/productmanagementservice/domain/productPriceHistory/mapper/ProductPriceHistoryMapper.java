@@ -21,7 +21,7 @@ public interface ProductPriceHistoryMapper {
                 .build();
     }
 
-    // TODO 검증용
+
     default List<ProductPriceHistoryResponseDto> productPricesToProductPriceResponses(List<ProductPriceHistory> products) {
         List<ProductPriceHistoryResponseDto> responseDtos = products.stream()
                 .map(this::productPriceToProductPriceDto)

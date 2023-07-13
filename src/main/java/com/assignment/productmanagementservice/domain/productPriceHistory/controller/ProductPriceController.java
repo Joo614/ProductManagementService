@@ -1,6 +1,5 @@
 package com.assignment.productmanagementservice.domain.productPriceHistory.controller;
 
-import com.assignment.productmanagementservice.domain.product.entity.Product;
 import com.assignment.productmanagementservice.domain.productPriceHistory.mapper.ProductPriceHistoryMapper;
 import com.assignment.productmanagementservice.domain.productPriceHistory.dto.ProductPriceHistoryResponseDto;
 import com.assignment.productmanagementservice.domain.productPriceHistory.service.ProductPriceHistoryService;
@@ -35,12 +34,11 @@ public class ProductPriceController {
     public ResponseEntity getProductPriceAtSpecificTime(@AuthenticationPrincipal User authMember,
                                                         @PathVariable("product_id") @Positive long productId,
                                                         @RequestParam("timestamp") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timestamp){
-//                                                        TODO @RequestParam("timestamp") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime timestamp) {
         ProductPriceHistory productPriceHistory = productPriceHistoryService.findProductPriceAtSpecificTime(productId, timestamp, authMember.getUsername());
         return ResponseEntity.ok(new SingleResponse<>(mapper.productPriceToProductPriceDto(productPriceHistory)));
     }
 
-    // TODO 검증용
+    // 상품별 가격 History 조회
     @GetMapping("/groupedByProductId")
     public ResponseEntity<List<ProductPriceHistoryResponseDto>> getAllProductPricesGroupedByProductId() {
         List<ProductPriceHistory> productPrices = productPriceHistoryService.findAllProductPriceGroupedByProductId();

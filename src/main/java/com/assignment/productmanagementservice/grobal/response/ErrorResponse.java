@@ -10,7 +10,6 @@ import javax.validation.ConstraintViolation;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 @ToString
 @Getter
 public class ErrorResponse {

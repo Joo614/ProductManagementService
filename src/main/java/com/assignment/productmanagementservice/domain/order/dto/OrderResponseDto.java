@@ -14,9 +14,8 @@ import java.util.List;
 public class OrderResponseDto {
     private Long orderId;
     private List<OrderItemDto.Response> orderItems;
-//    private OrderItemDto.Response productId;
-//    private OrderItemDto.Response quantity;
     private Long deliveryFee;
     private Long totalAmount;
-    private CouponDto.Response appliedCoupon; // 적용한 쿠폰
+    private Long paymentAmount;
+    private CouponDto.Response appliedCoupon; // 적용한 쿠폰 정보
 }

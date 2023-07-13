@@ -1,12 +1,10 @@
 package com.assignment.productmanagementservice.domain.coupon.entity;
 
 import com.assignment.productmanagementservice.domain.order.entity.Order;
-import com.assignment.productmanagementservice.domain.product.entity.Product;
 import com.assignment.productmanagementservice.grobal.audit.Auditable;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -22,11 +20,11 @@ public class Coupon extends Auditable {
     @Column(nullable = false, length = 50)
     private String couponName;
 
-    @Column(nullable = false)
-    private BigDecimal discountRate; // 할인율 == 쿠폰 적용 비율
+    @Column
+    private Long discountRate; // 할인율 == 쿠폰 적용 비율
 
     @Column
-    private BigDecimal discountAmount; // 할인할 금액 == 쿠폰 적용 금액
+    private Long discountAmount; // 할인할 금액 == 쿠폰 적용 금액
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false, length = 20)
@@ -36,9 +34,8 @@ public class Coupon extends Auditable {
     @Column(nullable = false, length = 20)
     private CouponScope scope;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product specificProduct;
+    @Column(name = "product_id")
+    private Long specificProductId;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

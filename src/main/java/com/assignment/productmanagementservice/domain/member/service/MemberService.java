@@ -5,8 +5,9 @@ import com.assignment.productmanagementservice.domain.member.entity.Member;
 
 public interface MemberService {
     Member createMember(Member member);
-
-    Member findMember(String email);
     MemberDto.Response findMemberDto(String email);
+
+    // 검증 로직
+    Member findMember(String email);
     Member verifyMember(String email);
 }

@@ -1,8 +1,6 @@
 package com.assignment.productmanagementservice.domain.productPriceHistory.service;
 
 import com.assignment.productmanagementservice.domain.member.service.MemberService;
-import com.assignment.productmanagementservice.domain.product.entity.Product;
-import com.assignment.productmanagementservice.domain.product.service.ProductService;
 import com.assignment.productmanagementservice.domain.productPriceHistory.entity.ProductPriceHistory;
 import com.assignment.productmanagementservice.domain.productPriceHistory.repository.JpaProductPriceHistoryRepository;
 import com.assignment.productmanagementservice.grobal.exception.CustomLogicException;
@@ -25,10 +23,11 @@ public class ProductPriceHistoryServiceImpl implements ProductPriceHistoryServic
         this.memberService = memberService;
     }
 
+    // 특정 시점의 상품 가격 조회
     @Override
     public ProductPriceHistory findProductPriceAtSpecificTime(long productId, LocalDateTime timestamp, String userName) {
         memberService.findMember(userName);
-        findProductPriceHistory(productId); // 해당 productId를 가진 가격 내역이 있는지 검증
+        findProductPriceHistory(productId);
 
         Optional<ProductPriceHistory> optionalProductPriceHistory = jpaProductPriceHistoryRepository.findByProductIdAndModifiedAt(productId, timestamp);
 
@@ -39,22 +38,19 @@ public class ProductPriceHistoryServiceImpl implements ProductPriceHistoryServic
         }
     }
 
-    // 검증 로직
-    @Override
-    public ProductPriceHistory findProductPriceHistory(long productId) {
-        return verifyProductPriceHistory(productId);
-    }
-
-    private ProductPriceHistory verifyProductPriceHistory(long productId) {
-        Optional<ProductPriceHistory> optionalProduct = jpaProductPriceHistoryRepository.findByProductId(productId);
-        return optionalProduct.orElseThrow(() ->
-                new CustomLogicException(ExceptionCode.PRODUCT_NONE));
-    }
-
-    // TODO 검증용
+    // 상품별 가격 Hsitory 조회
     @Override
     public List<ProductPriceHistory> findAllProductPriceGroupedByProductId() {
         List<ProductPriceHistory> groupedResults = jpaProductPriceHistoryRepository.findAllGroupedByProductId();
         return groupedResults;
     }
+
+
+    // 검증 로직
+    private void findProductPriceHistory(long productId) {
+        Optional<ProductPriceHistory> optionalProduct = jpaProductPriceHistoryRepository.findByProductId(productId);
+        optionalProduct.orElseThrow(() ->
+                new CustomLogicException(ExceptionCode.PRODUCT_NONE));
+    }
+
 }

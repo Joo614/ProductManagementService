@@ -3,10 +3,8 @@ package com.assignment.productmanagementservice.domain.member.dto;
 import com.assignment.productmanagementservice.domain.member.entity.Member;
 import lombok.*;
 
-import javax.management.relation.Role;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.util.List;
 
 @Getter
 @Setter
@@ -33,7 +31,6 @@ public class MemberDto {
         private Member.Gender genders;
     }
 
-    // TODO 검증용 - 나중에 지우기
     @Getter
     @Setter
     @NoArgsConstructor
