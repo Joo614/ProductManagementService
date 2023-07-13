@@ -20,15 +20,12 @@ public class Coupon extends Auditable {
     private Long couponId;
 
     @Column(nullable = false, length = 50)
-    private String CouponName;
-
-    @Column(nullable = false, length = 10)
-    private Long deliveryFee;
+    private String couponName;
 
     @Column(nullable = false)
     private BigDecimal discountRate; // 할인율 == 쿠폰 적용 비율
 
-    @Column(nullable = false)
+    @Column
     private BigDecimal discountAmount; // 할인할 금액 == 쿠폰 적용 금액
 
     @Enumerated(value = EnumType.STRING)
@@ -44,7 +41,7 @@ public class Coupon extends Auditable {
     private Product specificProduct;
 
     @ManyToOne
-    @JoinColumn(name = "order_id") // 주문과 연결되어야 함
+    @JoinColumn(name = "order_id")
     private Order order;
 
 }

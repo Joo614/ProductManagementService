@@ -23,13 +23,7 @@ public interface OrderMapper {
 
         Order.OrderBuilder order = Order.builder();
         if (requestBody.getOrderItems() != null) {
-//            order.orderItems(requestBody.getOrderItems().stream()
-//                    .map(orderItem -> {
-//                        return OrderItemDto.Post.builder()
-//                                .productId(orderItem.getProductId())
-//                                .quantity(orderItem.getQuantity())
-//                                .build();
-//                    }).collect(Collectors.toList()));
+
             List<OrderItem> orderItems = requestBody.getOrderItems().stream()
                     .map(orderItemDto -> {
                         OrderItem orderItem = OrderItem.builder()
@@ -48,8 +42,7 @@ public interface OrderMapper {
 
             order.orderItems(orderItems);
         }
-//        order.productId(orderItemPostDtoToOrderItem(requestBody.getProductId()));
-//        order.quantity(orderItemPostDtoToOrderItem(requestBody.getQuantity()));
+
         order.deliveryFee(3000L);
 //        order.coupons();
         return order.build();

@@ -1,5 +1,6 @@
 package com.assignment.productmanagementservice.domain.order.dto;
 
+import com.assignment.productmanagementservice.domain.coupon.dto.CouponDto;
 import com.assignment.productmanagementservice.domain.orderItem.dto.OrderItemDto;
 import lombok.*;
 
@@ -17,5 +18,5 @@ public class OrderResponseDto {
 //    private OrderItemDto.Response quantity;
     private Long deliveryFee;
     private Long totalAmount;
-    private String appliedCoupon; // 적용한 쿠폰
+    private CouponDto.Response appliedCoupon; // 적용한 쿠폰
 }
