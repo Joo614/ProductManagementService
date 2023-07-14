@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-//TODO 인덱싱
 public class Member extends Auditable {
     @Id
     @Column(nullable = false, updatable = false, unique = true, length = 100) // 이메일 식별자

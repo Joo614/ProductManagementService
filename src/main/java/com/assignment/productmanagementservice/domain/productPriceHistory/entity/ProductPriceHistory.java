@@ -11,7 +11,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
-// TODO indexing
 public class ProductPriceHistory extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

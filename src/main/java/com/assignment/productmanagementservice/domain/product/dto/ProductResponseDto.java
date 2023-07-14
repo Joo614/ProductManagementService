@@ -4,7 +4,6 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-// TODO DateTimeFormat
 @AllArgsConstructor
 @Getter
 @Setter
