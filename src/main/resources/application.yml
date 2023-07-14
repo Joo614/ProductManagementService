@@ -3,21 +3,22 @@ spring:
     ansi:
       enabled: always
   jpa:
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non_contextual_creation: true
-        format_sql: true
     hibernate:
       ddl-auto: create
-    defer-datasource-initialization: true # TODO data.sql? ? ???? ?? ??
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
     open-in-view: true
   profiles:
     active: local
   main:
     allow-bean-definition-overriding: true
+  sql:
+    init:
+      data-locations: classpath*:data.sql
+      mode: always
 
 admin:
   email : mart@gmail.com, admin@gmail.com

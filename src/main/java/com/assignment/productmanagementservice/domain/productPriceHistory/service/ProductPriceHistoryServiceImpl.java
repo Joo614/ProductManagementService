@@ -5,6 +5,7 @@ import com.assignment.productmanagementservice.domain.productPriceHistory.entity
 import com.assignment.productmanagementservice.domain.productPriceHistory.repository.JpaProductPriceHistoryRepository;
 import com.assignment.productmanagementservice.grobal.exception.CustomLogicException;
 import com.assignment.productmanagementservice.grobal.exception.ExceptionCode;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -40,9 +41,8 @@ public class ProductPriceHistoryServiceImpl implements ProductPriceHistoryServic
 
     // 상품별 가격 Hsitory 조회
     @Override
-    public List<ProductPriceHistory> findAllProductPriceGroupedByProductId() {
-        List<ProductPriceHistory> groupedResults = jpaProductPriceHistoryRepository.findAllGroupedByProductId();
-        return groupedResults;
+    public Page<ProductPriceHistory> findAllProductPriceGroupedByProductId(int page, int size) {
+        return jpaProductPriceHistoryRepository.findAllGroupedByProductId(page, size);
     }
 
 

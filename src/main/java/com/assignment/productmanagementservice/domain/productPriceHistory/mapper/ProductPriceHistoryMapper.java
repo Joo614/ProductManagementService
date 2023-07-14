@@ -16,7 +16,7 @@ public interface ProductPriceHistoryMapper {
                 .productId(productPriceHistory.getProductId())
                 .productName(productPriceHistory.getProductName())
                 .price(productPriceHistory.getPrice())
-                .productPriceId(productPriceHistory.getProductPriceHistoryId())
+                .productPriceHistoryId(productPriceHistory.getProductPriceHistoryId())
                 .modifiedAt(productPriceHistory.getModifiedAt())
                 .build();
     }

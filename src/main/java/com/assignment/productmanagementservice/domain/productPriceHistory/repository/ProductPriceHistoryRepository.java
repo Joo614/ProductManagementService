@@ -1,6 +1,7 @@
 package com.assignment.productmanagementservice.domain.productPriceHistory.repository;
 
 import com.assignment.productmanagementservice.domain.productPriceHistory.entity.ProductPriceHistory;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
@@ -9,9 +10,7 @@ import java.util.Optional;
 
 public interface ProductPriceHistoryRepository {
 
-    // TODO queryDsl로 변경
-    @Query("SELECT p FROM ProductPriceHistory p GROUP BY p.productId, p.productPriceHistoryId")
-    List<ProductPriceHistory> findAllGroupedByProductId();
+    Page<ProductPriceHistory> findAllGroupedByProductId(int page, int size);
 
     Optional<ProductPriceHistory> findByProductIdAndModifiedAt(long productId, LocalDateTime timestamp);
 

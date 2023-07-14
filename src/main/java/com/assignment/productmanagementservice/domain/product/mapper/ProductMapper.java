@@ -20,7 +20,7 @@ public interface ProductMapper {
                 .productId(product.getProductId())
                 .price(product.getPrice())
                 .productName(product.getProductName())
-                .createAt(product.getCreatedAt())
+                .createdAt(product.getCreatedAt())
                 .modifiedAt(product.getModifiedAt())
                 .build();
     }

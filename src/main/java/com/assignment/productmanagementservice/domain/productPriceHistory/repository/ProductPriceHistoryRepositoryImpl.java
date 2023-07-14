@@ -2,8 +2,12 @@ package com.assignment.productmanagementservice.domain.productPriceHistory.repos
 
 import com.assignment.productmanagementservice.domain.productPriceHistory.entity.ProductPriceHistory;
 import com.assignment.productmanagementservice.domain.productPriceHistory.entity.QProductPriceHistory;
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,12 +28,19 @@ public class ProductPriceHistoryRepositoryImpl implements ProductPriceHistoryRep
         this.queryFactory = new JPAQueryFactory(em);
     }
     @Override
-    public List<ProductPriceHistory> findAllGroupedByProductId() {
+    public Page<ProductPriceHistory> findAllGroupedByProductId(int page, int size) {
         JPAQuery<ProductPriceHistory> query = queryFactory
-                .selectFrom(qProductPriceHistory)
-                .groupBy(qProductPriceHistory.productId, qProductPriceHistory.productPriceHistoryId);
+                .selectDistinct(qProductPriceHistory)
+                .from(qProductPriceHistory)
+                .groupBy(qProductPriceHistory.productId, qProductPriceHistory.productPriceHistoryId)
+                .offset(page * size)
+                .limit(size);
 
-        return query.fetch();
+        QueryResults<ProductPriceHistory> results = query.fetchResults();
+        List<ProductPriceHistory> content = results.getResults();
+        long totalElements = results.getTotal();
+
+        return new PageImpl<>(content, PageRequest.of(page, size), totalElements);
     }
 
     @Override

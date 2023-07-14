@@ -14,6 +14,6 @@ public class ProductResponseDto {
     private Long productId;
     private String productName;
     private Long price;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }

@@ -15,6 +15,6 @@ public class ProductPriceHistoryResponseDto {
     private Long productId;
     private String productName;
     private Long price;
-    private Long productPriceId;
+    private Long productPriceHistoryId;
     private LocalDateTime modifiedAt;
 }

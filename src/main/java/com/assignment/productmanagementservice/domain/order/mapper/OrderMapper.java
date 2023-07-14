@@ -29,10 +29,8 @@ public interface OrderMapper {
                         OrderItem orderItem = OrderItem.builder()
                                 .quantity(orderItemDto.getQuantity())
                                 .build();
-                        orderItem.setOrder(order.build()); // Order와 OrderItem 간의 양방향 관계 설정
-                        // TODO 여기 주석 지우기
+                        orderItem.setOrder(order.build());
 
-                        // Product 엔티티를 참조하는 productId 필드 대신에 해당 Product의 식별자(ID)를 할당
                         Product product = new Product();
                         product.setProductId(orderItemDto.getProductId());
                         orderItem.setProduct(product);
@@ -75,7 +73,6 @@ public interface OrderMapper {
         response.totalAmount(order.getTotalAmount());
         response.paymentAmount(order.getPaymentAmount());
 
-        // TODO 다시 한 번 훑어 보기
         if (order.getCoupon() != null) {
             CouponDto.Response.ResponseBuilder coupon = CouponDto.Response.builder()
                     .couponId(order.getCoupon().getCouponId())
