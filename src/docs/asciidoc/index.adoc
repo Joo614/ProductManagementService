@@ -1,0 +1,183 @@
+ifndef::snippets[]
+:snippets: ../backend/build/generated-snippets
+endif::[]
+= ProductManagementService
+:sectnums:
+:toc: left
+:toclevels: 4
+:toc-title: Table of Contents
+:source-highlighter: prettify
+
+주현주
+
+v1.0.0, 2023.07.14
+
+***
+== AuthController
+
+=== 로그인
+-> POST /api/v1/auth/login
+
+.http-request
+include::{snippets}/auth-login/http-request.adoc[]
+.request-body
+include::{snippets}/auth-login/request-body.adoc[]
+.request-fields
+include::{snippets}/auth-login/request-fields.adoc[]
+.response-body
+include::{snippets}/auth-login/response-body.adoc[]
+.response-headers
+include::{snippets}/auth-login/response-headers.adoc[]
+
+=== Token Refresh
+-> POST /api/v1/auth/refresh
+
+.http-request
+include::{snippets}/auth-refresh/http-request.adoc[]
+.response-headers
+include::{snippets}/auth-refresh/response-headers.adoc[]
+
+== Member
+=== 회원 가입
+.http-request
+include::{snippets}/member-create/http-request.adoc[]
+.request-body
+include::{snippets}/member-create/request-body.adoc[]
+.request-fields
+include::{snippets}/member-create/request-fields.adoc[]
+.http-response
+include::{snippets}/member-create/http-response.adoc[]
+
+=== 회원 조회
+.path-parameters
+include::{snippets}/member-get/path-parameters.adoc[]
+.http-request
+include::{snippets}/member-get/http-request.adoc[]
+.http-response
+include::{snippets}/member-get/http-response.adoc[]
+.response-body
+include::{snippets}/member-get/response-body.adoc[]
+.response-fields
+include::{snippets}/member-get/response-fields.adoc[]
+
+
+== Product
+=== 상품 생성
+.request-headers
+include::{snippets}/product-create/request-headers.adoc[]
+.http-request
+include::{snippets}/product-create/http-request.adoc[]
+.request-body
+include::{snippets}/product-create/request-body.adoc[]
+.request-fields
+include::{snippets}/product-create/request-fields.adoc[]
+.http-response
+include::{snippets}/product-create/http-response.adoc[]
+.response-body
+include::{snippets}/product-create/response-body.adoc[]
+.response-fields
+include::{snippets}/product-create/response-fields.adoc[]
+
+=== 상품 가격 수정
+.request-headers
+include::{snippets}/product-update/request-headers.adoc[]
+.path-parameters
+include::{snippets}/product-update/path-parameters.adoc[]
+.http-request
+include::{snippets}/product-update/http-request.adoc[]
+.request-body
+include::{snippets}/product-update/request-body.adoc[]
+.request-fields
+include::{snippets}/product-update/request-fields.adoc[]
+.http-response
+include::{snippets}/product-update/http-response.adoc[]
+.response-body
+include::{snippets}/product-update/response-body.adoc[]
+.response-fields
+include::{snippets}/product-update/response-fields.adoc[]
+
+=== 상품 삭제
+.request-headers
+include::{snippets}/product-delete/request-headers.adoc[]
+.http-request
+include::{snippets}/product-delete/http-request.adoc[]
+.http-response
+include::{snippets}/product-delete/http-response.adoc[]
+
+=== 전체 상품 조회
+.request-parameters
+include::{snippets}/product-getAll/request-parameters.adoc[]
+.http-request
+include::{snippets}/product-getAll/http-request.adoc[]
+.http-response
+include::{snippets}/product-getAll/http-response.adoc[]
+.response-body
+include::{snippets}/product-getAll/response-body.adoc[]
+.response-fields
+include::{snippets}/product-getAll/response-fields.adoc[]
+
+
+== ProductPriceHistory
+=== 특정 시점의 상품 가격 조회
+.request-headers
+include::{snippets}/productPriceHistory-getProductPriceAtSpecificTime/request-headers.adoc[]
+.path-parameters
+include::{snippets}/productPriceHistory-getProductPriceAtSpecificTime/path-parameters.adoc[]
+.request-parameters
+include::{snippets}/productPriceHistory-getProductPriceAtSpecificTime/request-parameters.adoc[]
+.http-request
+include::{snippets}/productPriceHistory-getProductPriceAtSpecificTime/http-request.adoc[]
+.http-response
+include::{snippets}/productPriceHistory-getProductPriceAtSpecificTime/http-response.adoc[]
+.response-body
+include::{snippets}/productPriceHistory-getProductPriceAtSpecificTime/response-body.adoc[]
+.response-fields
+include::{snippets}/productPriceHistory-getProductPriceAtSpecificTime/response-fields.adoc[]
+
+=== 상품 가격 히스토리 전체 조회
+.request-parameters
+include::{snippets}/productPriceHistory-getAll/request-parameters.adoc[]
+.http-request
+include::{snippets}/productPriceHistory-getAll/http-request.adoc[]
+.http-response
+include::{snippets}/productPriceHistory-getAll/http-response.adoc[]
+.response-body
+include::{snippets}/productPriceHistory-getAll/response-body.adoc[]
+.response-fields
+include::{snippets}/productPriceHistory-getAll/response-fields.adoc[]
+
+
+== Coupon
+=== 쿠폰 생성
+.request-headers
+include::{snippets}/coupon-create/request-headers.adoc[]
+.http-request
+include::{snippets}/coupon-create/http-request.adoc[]
+.request-body
+include::{snippets}/coupon-create/request-body.adoc[]
+.request-fields
+include::{snippets}/coupon-create/request-fields.adoc[]
+.http-response
+include::{snippets}/coupon-create/http-response.adoc[]
+.response-body
+include::{snippets}/coupon-create/response-body.adoc[]
+.response-fields
+include::{snippets}/coupon-create/response-fields.adoc[]
+
+
+== Order
+=== 주문 생성
+.request-headers
+include::{snippets}/order-create/request-headers.adoc[]
+.http-request
+include::{snippets}/order-create/http-request.adoc[]
+.request-body
+include::{snippets}/order-create/request-body.adoc[]
+.request-fields
+include::{snippets}/order-create/request-fields.adoc[]
+.http-response
+include::{snippets}/order-create/http-response.adoc[]
+.response-body
+include::{snippets}/order-create/response-body.adoc[]
+.response-fields
+include::{snippets}/order-create/response-fields.adoc[]
