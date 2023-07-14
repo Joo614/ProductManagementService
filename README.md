@@ -49,7 +49,7 @@
 - [asciidoctor를 사용하여 REST Docs를 만들었습니다.](http://localhost:63342/ead61b63-b0a6-4ff2-a49a-86be75ccfd1a/source?file=C%3A%2FUsers%2FUSER%2FDesktop%2FProductManagementService%2Fsrc%2Fdocs%2Fasciidoc%2Findex.adoc&mac=aYwA7CcddKbYJROcM3UM0S/6SJXndsHjrq9V9HPwIYs=&projectUrl=C%3A%2FUsers%2FUSER%2FDesktop%2FProductManagementService)
 
 ---
-## 📌 Skill Set
+## 📌 사용 스킬
 - Java
 - Spring Boot & Spring MVC
 - Spring Data JPA
