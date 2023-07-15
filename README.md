@@ -46,7 +46,7 @@
 
 ---
 ## 📌 API 명세
-- [asciidoctor를 사용하여 REST Docs를 만들고 pdf로 변환하였습니다.](https://github.com/Joo614/ProductManagementService/files/12060102/index.pdf)
+- asciidoctor를 사용하여 REST Docs를 만들었는데 페이지가 안들어가져 빠른 시일 내에 다시 업로드 하겠습니다.
 
 ---
 ## 📌 사용 스킬
