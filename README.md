@@ -46,7 +46,7 @@
 
 ---
 ## 📌 API 명세
-- asciidoctor를 사용하여 REST Docs를 만들었는데 페이지가 안들어가져 빠른 시일 내에 다시 업로드 하겠습니다.
+- [asciidoctor를 사용하여 REST Docs를 만든 후 s3로 내보냈습니다.](http://indx.html.s3-website.ap-northeast-2.amazonaws.com/)
 
 ---
 ## 📌 사용 스킬
