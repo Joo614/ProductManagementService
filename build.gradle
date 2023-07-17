@@ -23,7 +23,6 @@ configurations {
 		extendsFrom annotationProcessor
 	}
 	configureEach {
-		// h2gis에 logger sl4j가 포함되어 있어서 multibinding 에러나서 제외
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 		exclude group: 'log4j', module: 'log4j'
 		exclude group: 'org.slf4j', module: 'slf4j-jdk14'
@@ -48,6 +47,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 
 	runtimeOnly 'com.h2database:h2'
 

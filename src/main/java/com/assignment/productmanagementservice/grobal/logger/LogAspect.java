@@ -16,13 +16,13 @@ import java.lang.reflect.Method;
 @Component
 public class LogAspect {
 
-    @Pointcut("execution(* com.assignment.projectmanagementservice..*(..))")
+    @Pointcut("execution(* com.assignment.productmanagementservice..*(..))")
     public void all() {
     }
-    @Pointcut("execution(* com.assignment.projectmanagementservice..*Controller.*(..))")
+    @Pointcut("execution(* com.assignment.productmanagementservice..*Controller.*(..))")
     public void controller() {
     }
-    @Pointcut("execution(* com.assignment.projectmanagementservice..*Service.*(..))")
+    @Pointcut("execution(* com.assignment.productmanagementservice..*Service.*(..))")
     public void service(){}
     @Around("all()")
     public Object logging(ProceedingJoinPoint joinPoint) throws Throwable {
