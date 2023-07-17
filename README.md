@@ -46,7 +46,7 @@
 
 ---
 ## 📌 API 명세
-- [asciidoctor를 사용하여 REST Docs를 만들었습니다.](http://localhost:63342/ead61b63-b0a6-4ff2-a49a-86be75ccfd1a/source?file=C%3A%2FUsers%2FUSER%2FDesktop%2FProductManagementService%2Fsrc%2Fdocs%2Fasciidoc%2Findex.adoc&mac=aYwA7CcddKbYJROcM3UM0S/6SJXndsHjrq9V9HPwIYs=&projectUrl=C%3A%2FUsers%2FUSER%2FDesktop%2FProductManagementService)
+- [asciidoctor를 사용하여 REST Docs를 만든 후 s3로 내보냈습니다.](http://indx.html.s3-website.ap-northeast-2.amazonaws.com/)
 
 ---
 ## 📌 사용 스킬
