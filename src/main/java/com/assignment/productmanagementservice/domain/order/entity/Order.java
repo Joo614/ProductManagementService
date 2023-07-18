@@ -31,6 +31,6 @@ public class Order extends Auditable {
     private Long totalAmount;
     private Long PaymentAmount;
 
-    @OneToOne(cascade = CascadeType.DETACH)
+    @OneToOne
     private Coupon coupon;
 }
