@@ -31,6 +31,7 @@ public class Order extends Auditable {
     private Long totalAmount;
     private Long PaymentAmount;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "coupon_id")
     private Coupon coupon;
 }

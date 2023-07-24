@@ -388,94 +388,94 @@ VALUES ('Coupon G1', 15, NULL, 'RATIO', 'SPECIFIC_PRODUCT', 6, CURRENT_TIMESTAMP
 
 
 -- Orders
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (1000, 20000, 17000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 15000, 12000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (3000, 18000, 16000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (4000, 22000, 18000, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (5000, 19000, 16000, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 16000, 14000, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (3000, 20000, 18000, 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (4000, 15000, 13000, 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (1000, 23000, 19000, 9, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 17000, 15000, 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (4000, 20000, 17000, 11, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 14000, 12000, 12, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (3000, 18000, 16000, 13, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (5000, 24000, 20000, 14, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (3000, 17000, 15000, 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (4000, 19000, 17000, 16, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (1000, 13000, 11000, 17, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (5000, 22000, 19000, 18, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 18000, 16000, 19, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (3000, 21000, 18000, 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 16000, 14000, 21, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (3000, 21000, 18000, 22, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (4000, 22000, 18000, 23, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (1000, 19000, 16000, 24, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 24000, 20000, 25, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (4000, 17000, 15000, 26, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (3000, 19000, 17000, 27, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (4000, 13000, 11000, 28, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (1000, 22000, 19000, 29, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_coupon_id, created_at, modified_at)
+INSERT INTO Orders (delivery_fee, total_amount, payment_amount, coupon_id, created_at, modified_at)
 VALUES (2000, 18000, 16000, 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 

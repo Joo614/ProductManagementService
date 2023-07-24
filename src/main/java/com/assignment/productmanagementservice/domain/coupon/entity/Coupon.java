@@ -5,6 +5,8 @@ import com.assignment.productmanagementservice.grobal.audit.Auditable;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -37,8 +39,7 @@ public class Coupon extends Auditable {
     @Column(name = "product_id")
     private Long specificProductId;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @OneToMany(mappedBy = "coupon", cascade = CascadeType.ALL)
+    private List<Order> orders = new ArrayList<>();
 
 }
