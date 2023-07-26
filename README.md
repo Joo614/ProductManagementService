@@ -1,6 +1,3 @@
-#### ❗ 7월 25일 수정 - `Order` 과 `Coupon` 사이의 연관관계 설계가 잘못된 것을 발견하여 다시 수정하였습니다.
-
----
 ## 📌 서비스 요구사항
 **1. 마트 권한과 일반 사용자 권한이 구분되어있다.**  
 ➡ 권한을 `ADMIN(MART)`, `CUSTOMER`로 구분하였습니다.
@@ -49,7 +46,7 @@
 
 ---
 ## 📌 API 명세
-- [asciidoctor를 사용하여 REST Docs를 만든 후 s3로 내보냈습니다.](http://indx.html.s3-website.ap-northeast-2.amazonaws.com/)
+- [API 명세 REST docs](http://indx.html.s3-website.ap-northeast-2.amazonaws.com/)
 
 ---
 ## 📌 사용 스킬
