@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url:  jdbc:mysql://productmanagementservice-database.cqhnfkhcir5q.ap-northeast-2.rds.amazonaws.com:13306/test?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
+    #jdbc:mysql://localhost:3306/test
+    username: hyunju
+    password: hyunju0614
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        format_sql: true
+        dialect: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
+#    database: mysql
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+config:
+  domain: http://indx.html.s3-website.ap-northeast-2.amazonaws.com
