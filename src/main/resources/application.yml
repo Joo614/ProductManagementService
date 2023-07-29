@@ -14,13 +14,13 @@ spring:
   profiles:
     active:
       - local
-      - prod
+#      - prod
   main:
     allow-bean-definition-overriding: true
   sql:
     init:
       data-locations: classpath*:data.sql
-      mode: never
+      mode: always
 admin:
   email : mart@gmail.com, admin@gmail.com
 
