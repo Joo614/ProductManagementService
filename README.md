@@ -1,5 +1,5 @@
 ## 📌 API 명세
-- [API 명세 REST docs](http://indx.html.s3-website.ap-northeast-2.amazonaws.com/)
+- [API 명세](http://indx.html.s3-website.ap-northeast-2.amazonaws.com/)
 
 ---
 ## 📌 사용 스킬
